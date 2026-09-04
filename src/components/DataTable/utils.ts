@@ -1,4 +1,7 @@
 import * as React from 'react';
+import { ScrollView, Text as NativeText, View } from 'react-native';
+
+import Text from '../Typography/Text';
 
 /** Whether a child is a particular `DataTable` sub-component. */
 export const isDataTableElement = <P>(
@@ -9,15 +12,45 @@ export const isDataTableElement = <P>(
     return false;
   }
 
-  const type: unknown = child.type;
+  const { type } = child;
 
   return (
     (typeof type === 'function' ||
       (typeof type === 'object' && type !== null)) &&
     'displayName' in type &&
-    (type as { displayName?: unknown }).displayName === displayName
+    type.displayName === displayName
   );
 };
+
+/**
+ * Whether the table can see through an element to the children it was given:
+ * the primitives it is built from render what they are handed, so a row inside
+ * one keeps its own place in the table.
+ */
+export const isTransparentContainer = (child: React.ReactElement): boolean =>
+  child.type === React.Fragment ||
+  child.type === View ||
+  child.type === ScrollView ||
+  child.type === NativeText ||
+  child.type === Text;
+
+const structuralParts = [
+  'DataTable.Header',
+  'DataTable.Row',
+  'DataTable.Pagination',
+];
+
+/**
+ * Whether a subtree holds a part of the table's structure - a header, a row or
+ * the pagination - at any depth.
+ */
+export const containsTableStructure = (node: React.ReactNode): boolean =>
+  React.Children.toArray(node).some(
+    (child) =>
+      structuralParts.some((part) => isDataTableElement(child, part)) ||
+      (React.isValidElement<{ children?: React.ReactNode }>(child) &&
+        containsTableStructure(child.props.children))
+  );
 
 /** The text of a node, when it has one. */
 export const getNodeText = (node: React.ReactNode): string | undefined => {

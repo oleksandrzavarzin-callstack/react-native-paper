@@ -1,3 +1,4 @@
+import * as React from 'react';
 import {
   Platform,
   StyleSheet,
@@ -211,6 +212,51 @@ describe('DataTable.Row', () => {
     ).toBeOnTheScreen();
   });
 
+  it('numbers a row component that takes children of its own', async () => {
+    Platform.OS = 'web';
+
+    const NameRow = ({ children }: { children: React.ReactNode }) => (
+      <DataTable.Row testID="row">
+        <DataTable.Cell>{children}</DataTable.Cell>
+        <DataTable.Cell numeric>159</DataTable.Cell>
+      </DataTable.Row>
+    );
+
+    await render(
+      <DataTable testID="table">
+        <DataTable.Header>
+          <DataTable.Title>Dessert</DataTable.Title>
+        </DataTable.Header>
+        <NameRow>Frozen yogurt</NameRow>
+      </DataTable>
+    );
+
+    // Children make it a wrapper to look at, not one to look through: what it
+    // renders is a row, and the only row the table has.
+    expect(screen.getByTestId('row')).toHaveProp('aria-rowindex', 2);
+    expect(screen.getByTestId('table')).toHaveProp('aria-rowcount', 2);
+  });
+
+  it('leaves the children of a row component as it was given them', async () => {
+    const NameRow = ({ children }: { children: React.ReactNode }) => (
+      <DataTable.Row testID="row">
+        <DataTable.Cell>{React.Children.only(children)}</DataTable.Cell>
+      </DataTable.Row>
+    );
+
+    await render(
+      <Table>
+        <NameRow>
+          <RNText>Frozen yogurt</RNText>
+        </NameRow>
+      </Table>
+    );
+
+    // A component counting its own children must not be handed an array of
+    // one where it was written a single child.
+    expect(screen.getByText('Frozen yogurt')).toBeOnTheScreen();
+  });
+
   it('lets a control inside a pressable row keep its own stop', async () => {
     await render(
       <Table>
@@ -282,6 +328,40 @@ describe('DataTable.Row', () => {
     expect(screen.getByTestId('first')).toHaveProp('aria-rowindex', 2);
     expect(screen.getByTestId('second')).toHaveProp('aria-rowindex', 3);
     expect(screen.getByTestId('table')).toHaveProp('aria-rowcount', 3);
+  });
+
+  it('finds the header and pagination inside a wrapper it cannot see through', async () => {
+    Platform.OS = 'web';
+
+    const Wrap = ({ children }: { children: React.ReactNode }) => (
+      <View>{children}</View>
+    );
+
+    await render(
+      <DataTable testID="table">
+        <Wrap>
+          <DataTable.Header>
+            <DataTable.Title>Dessert</DataTable.Title>
+          </DataTable.Header>
+        </Wrap>
+        <DataTable.Row testID="row">
+          <DataTable.Cell>Frozen yogurt</DataTable.Cell>
+        </DataTable.Row>
+        <Wrap>
+          <DataTable.Pagination
+            page={0}
+            numberOfPages={1}
+            onPageChange={() => {}}
+          />
+        </Wrap>
+      </DataTable>
+    );
+
+    // Neither wrapper holds a row, but each holds a part of the table - proof
+    // enough that it groups rather than renders a row of its own.
+    expect(screen.getByTestId('table')).toHaveProp('aria-colcount', 1);
+    expect(screen.getByTestId('table')).toHaveProp('aria-rowcount', 2);
+    expect(screen.getByTestId('row')).toHaveProp('aria-rowindex', 2);
   });
 
   it('numbers rows given in a fragment', async () => {

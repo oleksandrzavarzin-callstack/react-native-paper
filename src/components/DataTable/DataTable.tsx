@@ -19,8 +19,10 @@ import DataTableTitle, {
   DataTableTitle as _DataTableTitle,
 } from './DataTableTitle';
 import {
+  containsTableStructure,
   defaultFormatRowPosition,
   isDataTableElement,
+  isTransparentContainer,
   readColumnLabels,
 } from './utils';
 import type { FormatRowPosition } from './utils';
@@ -68,6 +70,11 @@ export type Props = ViewProps & {
   formatRowPosition?: FormatRowPosition | null;
   style?: StyleProp<ViewStyle>;
 };
+
+// `React.Children.map` always hands back an array, which is one child too many
+// for a wrapper written around `React.Children.only`.
+const unwrapSingleChild = (children: React.ReactNode): React.ReactNode =>
+  Array.isArray(children) && children.length === 1 ? children[0] : children;
 
 /**
  * Data tables allow displaying sets of data.
@@ -224,14 +231,24 @@ const DataTable = ({
             return number(child);
           }
 
-          // Anything the table can see into is descended into, not counted:
-          // a wrapper must not make its rows one row, nor an empty state a row.
-          if (nested !== undefined) {
-            return React.cloneElement(child, undefined, walk(nested));
+          // A container the table sees through, or a wrapper it can see the
+          // table's own parts inside, keeps its rows where they are: descend
+          // into it, so a wrapper does not make its rows one row, nor an empty
+          // state a row.
+          if (isTransparentContainer(child) || containsTableStructure(nested)) {
+            return nested === undefined
+              ? child
+              : React.cloneElement(
+                  child,
+                  undefined,
+                  unwrapSingleChild(walk(nested))
+                );
           }
 
-          // What is left renders its row out of sight, so it counts as one. A
-          // row the table never sees - a virtualized one - passes `index`.
+          // What is left renders out of sight - a row component of the
+          // consumer's own, most often - so it counts as one row. A row the
+          // table never sees at all, as a virtualized list renders, passes
+          // `index` itself.
           return number(child);
         });
 

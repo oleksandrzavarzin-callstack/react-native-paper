@@ -153,7 +153,7 @@ Rows, cells and titles with no touch handler render a plain `View` instead of a 
 - `nativeFocusMode="cell"` gives one stop per cell instead of one per row
 - `accessible={false}` on a row opts that row out
 - `formatRowPosition` replaces the wording, or removes it with `null`
-- rows are numbered by their position among the table's rows, wherever they sit: a wrapper grouping them is looked through, and anything beside them - an empty state, a caption - is not counted. Pass `index` on a row the table never renders itself, as a virtualized list does
+- rows are numbered by their position among the table's rows, wherever they sit: a fragment, a `View` or any wrapper the table can see rows inside is looked through, and anything beside them - an empty state, a caption - is not counted. A component of your own counts as the one row it renders; pass `index` on a row the table never renders itself, as a virtualized list does
 
 ```tsx
 // Before (v5)
