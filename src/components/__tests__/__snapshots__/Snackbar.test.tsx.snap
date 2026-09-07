@@ -577,7 +577,6 @@ exports[`renders snackbar with action button 1`] = `
             [
               {
                 "borderStyle": "solid",
-                "overflow": "hidden",
               },
               {
                 "backgroundColor": "transparent",
@@ -612,6 +611,14 @@ exports[`renders snackbar with action button 1`] = `
             accessible={true}
             collapsable={false}
             focusable={true}
+            hitSlop={
+              {
+                "bottom": 4,
+                "left": 0,
+                "right": 0,
+                "top": 4,
+              }
+            }
             onBlur={[Function]}
             onClick={[Function]}
             onFocus={[Function]}
@@ -627,7 +634,11 @@ exports[`renders snackbar with action button 1`] = `
                 {
                   "overflow": "hidden",
                 },
-                undefined,
+                [
+                  {
+                    "borderRadius": 20,
+                  },
+                ],
               ]
             }
             testID="button"

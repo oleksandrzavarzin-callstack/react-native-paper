@@ -17,6 +17,7 @@ import Button from '../Button/Button';
 import { Tokens } from '../Button/tokens';
 import {
   getButtonColors,
+  getButtonHitSlop,
   getButtonPressedRadius,
   getButtonRippleColor,
   getButtonShapeRadius,
@@ -701,12 +702,13 @@ const sizeMetrics: [
   iconGap: number,
   outlineWidth: number,
   labelVariant: ButtonLabelVariant,
+  outerBoundHeight: number,
 ][] = [
-  ['extra-small', 32, 12, 12, 20, 4, 1, 'labelLarge'],
-  ['small', 40, 16, 16, 20, 8, 1, 'labelLarge'],
-  ['medium', 56, 24, 24, 24, 8, 1, 'titleMedium'],
-  ['large', 96, 48, 48, 32, 12, 2, 'headlineSmall'],
-  ['extra-large', 136, 64, 64, 40, 16, 3, 'headlineLarge'],
+  ['extra-small', 32, 12, 12, 20, 4, 1, 'labelLarge', 48],
+  ['small', 40, 16, 16, 20, 8, 1, 'labelLarge', 48],
+  ['medium', 56, 24, 24, 24, 8, 1, 'titleMedium', 64],
+  ['large', 96, 48, 48, 32, 12, 2, 'headlineSmall', 104],
+  ['extra-large', 136, 64, 64, 40, 16, 3, 'headlineLarge', 144],
 ];
 
 describe('getButtonSizeStyle', () => {
@@ -720,7 +722,8 @@ describe('getButtonSizeStyle', () => {
       iconSize,
       iconGap,
       outlineWidth,
-      labelVariant
+      labelVariant,
+      outerBoundHeight
     ) => {
       expect(getButtonSizeStyle(size)).toEqual({
         minHeight,
@@ -730,9 +733,29 @@ describe('getButtonSizeStyle', () => {
         iconGap,
         outlineWidth,
         labelVariant,
+        outerBoundHeight,
       });
     }
   );
+});
+
+describe('getButtonHitSlop', () => {
+  // The slop closes the gap between the drawn container and the outer bound,
+  // halved because it applies to both edges.
+  it.each(sizeMetrics)('reaches the %s outer bound', (size) => {
+    const { containerHeight, outerBoundHeight } = Tokens.sizes[size];
+    const slop = getButtonHitSlop(size);
+
+    expect(containerHeight + (slop?.top ?? 0) + (slop?.bottom ?? 0)).toBe(
+      outerBoundHeight
+    );
+  });
+
+  // The outer bound is a height; width comes off the 64dp minimum, which
+  // already clears the target.
+  it.each(sizeMetrics)('leaves the %s width alone', (size) => {
+    expect(getButtonHitSlop(size)).toMatchObject({ left: 0, right: 0 });
+  });
 });
 
 describe('size prop', () => {
@@ -1176,6 +1199,130 @@ describe('container height', () => {
 
     // Selecting drops the outline; without the inset this shrank by 2dp.
     expect(renderedBox('button')).toEqual(unselected);
+  });
+});
+
+describe('touch target', () => {
+  const styleOf = (testID: string) =>
+    StyleSheet.flatten(
+      // eslint-disable-next-line no-restricted-syntax -- TODO: replace TestInstance props access with a user-visible assertion.
+      screen.getByTestId(testID).props.style
+    );
+
+  it('leaves no clipping ancestor to swallow the expanded target', async () => {
+    await render(
+      <Button onPress={() => {}} testID="button">
+        X
+      </Button>
+    );
+
+    // The slop expands past the container, so an ancestor sized to the
+    // container must not clip. This is what made the previous `hitSlop`
+    // inert, and a passed-through prop alone would not catch it.
+    expect(styleOf('button-container-outer-layer').overflow).not.toBe('hidden');
+    expect(styleOf('button-container').overflow).not.toBe('hidden');
+  });
+
+  it('still clips the ripple to the container radius', async () => {
+    await render(
+      <Button onPress={() => {}} size="small" shape="round" testID="button">
+        X
+      </Button>
+    );
+
+    // Clipping moved onto the touchable, so the ripple keeps the pill shape
+    // now that the clip view above it no longer hides the overflow.
+    const style = styleOf('button');
+    expect(style.overflow).toBe('hidden');
+    expect(style.borderRadius).toBe(Tokens.sizes.small.containerHeight / 2);
+  });
+
+  // An outlined button's children sit inside the outline, so they round a
+  // border width tighter than the container. Given the outer radius instead,
+  // their corners overshoot the outline's inner edge and the background shows
+  // through the gap — worst on XL, which has the thickest stroke.
+  it.each(sizeMetrics)(
+    'insets the %s ripple radius by the outline width',
+    async (size) => {
+      await render(
+        <Button
+          mode="outlined"
+          onPress={() => {}}
+          size={size}
+          shape="square"
+          testID="button"
+        >
+          X
+        </Button>
+      );
+
+      const outer = StyleSheet.flatten(
+        // eslint-disable-next-line no-restricted-syntax -- TODO: replace TestInstance props access with a user-visible assertion.
+        screen.getByTestId('button-container').props.style
+      );
+
+      expect(styleOf('button').borderRadius).toBe(
+        outer.borderRadius - Tokens.sizes[size].outlinedOutlineWidth
+      );
+    }
+  );
+
+  it('leaves the ripple radius alone when there is no outline', async () => {
+    await render(
+      <Button mode="filled" onPress={() => {}} shape="square" testID="button">
+        X
+      </Button>
+    );
+
+    const outer = StyleSheet.flatten(
+      // eslint-disable-next-line no-restricted-syntax -- TODO: replace TestInstance props access with a user-visible assertion.
+      screen.getByTestId('button-container').props.style
+    );
+
+    expect(styleOf('button').borderRadius).toBe(outer.borderRadius);
+  });
+
+  it.each(sizeMetrics)(
+    'expands the %s target to the outer bound',
+    async (size) => {
+      await render(
+        <Button onPress={() => {}} size={size} testID="button">
+          X
+        </Button>
+      );
+
+      // eslint-disable-next-line no-restricted-syntax -- TODO: replace TestInstance props access with a user-visible assertion.
+      const { hitSlop } = screen.getByTestId('button').props;
+      const { containerHeight, outerBoundHeight } = Tokens.sizes[size];
+
+      expect(containerHeight + hitSlop.top + hitSlop.bottom).toBe(
+        outerBoundHeight
+      );
+    }
+  );
+
+  it('lets a caller hitSlop win', async () => {
+    await render(
+      <Button onPress={() => {}} hitSlop={12} testID="button">
+        X
+      </Button>
+    );
+
+    // eslint-disable-next-line no-restricted-syntax -- TODO: replace TestInstance props access with a user-visible assertion.
+    expect(screen.getByTestId('button').props.hitSlop).toBe(12);
+  });
+
+  it('takes `null` as an opt out', async () => {
+    await render(
+      <Button onPress={() => {}} hitSlop={null} testID="button">
+        X
+      </Button>
+    );
+
+    // eslint-disable-next-line no-restricted-syntax -- TODO: replace TestInstance props access with a user-visible assertion.
+    const { hitSlop } = screen.getByTestId('button').props;
+
+    expect(hitSlop).toBeNull();
   });
 });
 

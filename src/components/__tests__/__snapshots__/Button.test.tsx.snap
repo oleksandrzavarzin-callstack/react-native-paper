@@ -96,7 +96,6 @@ exports[`renders button with an accessibility hint 1`] = `
       [
         {
           "borderStyle": "solid",
-          "overflow": "hidden",
         },
         {
           "backgroundColor": "rgba(103, 80, 164, 1)",
@@ -132,6 +131,14 @@ exports[`renders button with an accessibility hint 1`] = `
       accessible={true}
       collapsable={false}
       focusable={true}
+      hitSlop={
+        {
+          "bottom": 4,
+          "left": 0,
+          "right": 0,
+          "top": 4,
+        }
+      }
       onBlur={[Function]}
       onClick={[Function]}
       onFocus={[Function]}
@@ -147,7 +154,11 @@ exports[`renders button with an accessibility hint 1`] = `
           {
             "overflow": "hidden",
           },
-          undefined,
+          [
+            {
+              "borderRadius": 20,
+            },
+          ],
         ]
       }
       testID="button"
@@ -319,7 +330,6 @@ exports[`renders button with an accessibility label 1`] = `
       [
         {
           "borderStyle": "solid",
-          "overflow": "hidden",
         },
         {
           "backgroundColor": "rgba(103, 80, 164, 1)",
@@ -354,6 +364,14 @@ exports[`renders button with an accessibility label 1`] = `
       accessible={true}
       collapsable={false}
       focusable={true}
+      hitSlop={
+        {
+          "bottom": 4,
+          "left": 0,
+          "right": 0,
+          "top": 4,
+        }
+      }
       onBlur={[Function]}
       onClick={[Function]}
       onFocus={[Function]}
@@ -369,7 +387,11 @@ exports[`renders button with an accessibility label 1`] = `
           {
             "overflow": "hidden",
           },
-          undefined,
+          [
+            {
+              "borderRadius": 20,
+            },
+          ],
         ]
       }
       testID="button"
@@ -540,7 +562,6 @@ exports[`renders button with button color 1`] = `
       [
         {
           "borderStyle": "solid",
-          "overflow": "hidden",
         },
         {
           "backgroundColor": "#e91e63",
@@ -575,6 +596,14 @@ exports[`renders button with button color 1`] = `
       accessible={true}
       collapsable={false}
       focusable={true}
+      hitSlop={
+        {
+          "bottom": 4,
+          "left": 0,
+          "right": 0,
+          "top": 4,
+        }
+      }
       onBlur={[Function]}
       onClick={[Function]}
       onFocus={[Function]}
@@ -590,7 +619,11 @@ exports[`renders button with button color 1`] = `
           {
             "overflow": "hidden",
           },
-          undefined,
+          [
+            {
+              "borderRadius": 20,
+            },
+          ],
         ]
       }
       testID="button"
@@ -761,7 +794,6 @@ exports[`renders button with color 1`] = `
       [
         {
           "borderStyle": "solid",
-          "overflow": "hidden",
         },
         {
           "backgroundColor": "rgba(103, 80, 164, 1)",
@@ -796,6 +828,14 @@ exports[`renders button with color 1`] = `
       accessible={true}
       collapsable={false}
       focusable={true}
+      hitSlop={
+        {
+          "bottom": 4,
+          "left": 0,
+          "right": 0,
+          "top": 4,
+        }
+      }
       onBlur={[Function]}
       onClick={[Function]}
       onFocus={[Function]}
@@ -811,7 +851,11 @@ exports[`renders button with color 1`] = `
           {
             "overflow": "hidden",
           },
-          undefined,
+          [
+            {
+              "borderRadius": 20,
+            },
+          ],
         ]
       }
       testID="button"
@@ -982,7 +1026,6 @@ exports[`renders button with custom testID 1`] = `
       [
         {
           "borderStyle": "solid",
-          "overflow": "hidden",
         },
         {
           "backgroundColor": "rgba(103, 80, 164, 1)",
@@ -1017,6 +1060,14 @@ exports[`renders button with custom testID 1`] = `
       accessible={true}
       collapsable={false}
       focusable={true}
+      hitSlop={
+        {
+          "bottom": 4,
+          "left": 0,
+          "right": 0,
+          "top": 4,
+        }
+      }
       onBlur={[Function]}
       onClick={[Function]}
       onFocus={[Function]}
@@ -1032,7 +1083,11 @@ exports[`renders button with custom testID 1`] = `
           {
             "overflow": "hidden",
           },
-          undefined,
+          [
+            {
+              "borderRadius": 20,
+            },
+          ],
         ]
       }
       testID="custom:testID"
@@ -1203,7 +1258,6 @@ exports[`renders button with icon 1`] = `
       [
         {
           "borderStyle": "solid",
-          "overflow": "hidden",
         },
         {
           "backgroundColor": "rgba(103, 80, 164, 1)",
@@ -1238,6 +1292,14 @@ exports[`renders button with icon 1`] = `
       accessible={true}
       collapsable={false}
       focusable={true}
+      hitSlop={
+        {
+          "bottom": 4,
+          "left": 0,
+          "right": 0,
+          "top": 4,
+        }
+      }
       onBlur={[Function]}
       onClick={[Function]}
       onFocus={[Function]}
@@ -1253,7 +1315,11 @@ exports[`renders button with icon 1`] = `
           {
             "overflow": "hidden",
           },
-          undefined,
+          [
+            {
+              "borderRadius": 20,
+            },
+          ],
         ]
       }
       testID="button"
@@ -1457,7 +1523,6 @@ exports[`renders button with icon in reverse order 1`] = `
       [
         {
           "borderStyle": "solid",
-          "overflow": "hidden",
         },
         {
           "backgroundColor": "rgba(103, 80, 164, 1)",
@@ -1492,6 +1557,14 @@ exports[`renders button with icon in reverse order 1`] = `
       accessible={true}
       collapsable={false}
       focusable={true}
+      hitSlop={
+        {
+          "bottom": 4,
+          "left": 0,
+          "right": 0,
+          "top": 4,
+        }
+      }
       onBlur={[Function]}
       onClick={[Function]}
       onFocus={[Function]}
@@ -1507,7 +1580,11 @@ exports[`renders button with icon in reverse order 1`] = `
           {
             "overflow": "hidden",
           },
-          undefined,
+          [
+            {
+              "borderRadius": 20,
+            },
+          ],
         ]
       }
       testID="button"
@@ -1713,7 +1790,6 @@ exports[`renders disabled button 1`] = `
       [
         {
           "borderStyle": "solid",
-          "overflow": "hidden",
         },
         {
           "backgroundColor": "transparent",
@@ -1728,6 +1804,7 @@ exports[`renders disabled button 1`] = `
     testID="button-container"
   >
     <View
+      collapsable={false}
       pointerEvents="none"
       style={
         [
@@ -1737,6 +1814,9 @@ exports[`renders disabled button 1`] = `
             "position": "absolute",
             "right": 0,
             "top": 0,
+          },
+          {
+            "borderRadius": 20,
           },
           {
             "backgroundColor": "rgba(29, 27, 32, 1)",
@@ -1766,6 +1846,14 @@ exports[`renders disabled button 1`] = `
       accessible={true}
       collapsable={false}
       focusable={true}
+      hitSlop={
+        {
+          "bottom": 4,
+          "left": 0,
+          "right": 0,
+          "top": 4,
+        }
+      }
       onBlur={[Function]}
       onClick={[Function]}
       onFocus={[Function]}
@@ -1781,7 +1869,11 @@ exports[`renders disabled button 1`] = `
           {
             "overflow": "hidden",
           },
-          undefined,
+          [
+            {
+              "borderRadius": 20,
+            },
+          ],
         ]
       }
       testID="button"
@@ -1952,7 +2044,6 @@ exports[`renders filled button by default 1`] = `
       [
         {
           "borderStyle": "solid",
-          "overflow": "hidden",
         },
         {
           "backgroundColor": "rgba(103, 80, 164, 1)",
@@ -1987,6 +2078,14 @@ exports[`renders filled button by default 1`] = `
       accessible={true}
       collapsable={false}
       focusable={true}
+      hitSlop={
+        {
+          "bottom": 4,
+          "left": 0,
+          "right": 0,
+          "top": 4,
+        }
+      }
       onBlur={[Function]}
       onClick={[Function]}
       onFocus={[Function]}
@@ -2002,7 +2101,11 @@ exports[`renders filled button by default 1`] = `
           {
             "overflow": "hidden",
           },
-          undefined,
+          [
+            {
+              "borderRadius": 20,
+            },
+          ],
         ]
       }
       testID="button"
@@ -2173,7 +2276,6 @@ exports[`renders filled button with mode 1`] = `
       [
         {
           "borderStyle": "solid",
-          "overflow": "hidden",
         },
         {
           "backgroundColor": "rgba(103, 80, 164, 1)",
@@ -2208,6 +2310,14 @@ exports[`renders filled button with mode 1`] = `
       accessible={true}
       collapsable={false}
       focusable={true}
+      hitSlop={
+        {
+          "bottom": 4,
+          "left": 0,
+          "right": 0,
+          "top": 4,
+        }
+      }
       onBlur={[Function]}
       onClick={[Function]}
       onFocus={[Function]}
@@ -2223,7 +2333,11 @@ exports[`renders filled button with mode 1`] = `
           {
             "overflow": "hidden",
           },
-          undefined,
+          [
+            {
+              "borderRadius": 20,
+            },
+          ],
         ]
       }
       testID="button"
@@ -2394,7 +2508,6 @@ exports[`renders loading button 1`] = `
       [
         {
           "borderStyle": "solid",
-          "overflow": "hidden",
         },
         {
           "backgroundColor": "rgba(103, 80, 164, 1)",
@@ -2429,6 +2542,14 @@ exports[`renders loading button 1`] = `
       accessible={true}
       collapsable={false}
       focusable={true}
+      hitSlop={
+        {
+          "bottom": 4,
+          "left": 0,
+          "right": 0,
+          "top": 4,
+        }
+      }
       onBlur={[Function]}
       onClick={[Function]}
       onFocus={[Function]}
@@ -2444,7 +2565,11 @@ exports[`renders loading button 1`] = `
           {
             "overflow": "hidden",
           },
-          undefined,
+          [
+            {
+              "borderRadius": 20,
+            },
+          ],
         ]
       }
       testID="button"
@@ -2806,7 +2931,6 @@ exports[`renders outlined button with mode 1`] = `
       [
         {
           "borderStyle": "solid",
-          "overflow": "hidden",
         },
         {
           "backgroundColor": "transparent",
@@ -2841,6 +2965,14 @@ exports[`renders outlined button with mode 1`] = `
       accessible={true}
       collapsable={false}
       focusable={true}
+      hitSlop={
+        {
+          "bottom": 4,
+          "left": 0,
+          "right": 0,
+          "top": 4,
+        }
+      }
       onBlur={[Function]}
       onClick={[Function]}
       onFocus={[Function]}
@@ -2856,7 +2988,11 @@ exports[`renders outlined button with mode 1`] = `
           {
             "overflow": "hidden",
           },
-          undefined,
+          [
+            {
+              "borderRadius": 19,
+            },
+          ],
         ]
       }
       testID="button"
@@ -3027,7 +3163,6 @@ exports[`renders text button with mode 1`] = `
       [
         {
           "borderStyle": "solid",
-          "overflow": "hidden",
         },
         {
           "backgroundColor": "transparent",
@@ -3062,6 +3197,14 @@ exports[`renders text button with mode 1`] = `
       accessible={true}
       collapsable={false}
       focusable={true}
+      hitSlop={
+        {
+          "bottom": 4,
+          "left": 0,
+          "right": 0,
+          "top": 4,
+        }
+      }
       onBlur={[Function]}
       onClick={[Function]}
       onFocus={[Function]}
@@ -3077,7 +3220,11 @@ exports[`renders text button with mode 1`] = `
           {
             "overflow": "hidden",
           },
-          undefined,
+          [
+            {
+              "borderRadius": 20,
+            },
+          ],
         ]
       }
       testID="button"
@@ -3248,7 +3395,6 @@ exports[`size prop renders a button with per-size metrics 1`] = `
       [
         {
           "borderStyle": "solid",
-          "overflow": "hidden",
         },
         {
           "backgroundColor": "rgba(103, 80, 164, 1)",
@@ -3283,6 +3429,14 @@ exports[`size prop renders a button with per-size metrics 1`] = `
       accessible={true}
       collapsable={false}
       focusable={true}
+      hitSlop={
+        {
+          "bottom": 4,
+          "left": 0,
+          "right": 0,
+          "top": 4,
+        }
+      }
       onBlur={[Function]}
       onClick={[Function]}
       onFocus={[Function]}
@@ -3298,7 +3452,11 @@ exports[`size prop renders a button with per-size metrics 1`] = `
           {
             "overflow": "hidden",
           },
-          undefined,
+          [
+            {
+              "borderRadius": 28,
+            },
+          ],
         ]
       }
       testID="button"

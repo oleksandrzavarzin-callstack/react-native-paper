@@ -15,6 +15,7 @@ type ButtonSizeTokens = {
   leadingSpace: number;
   trailingSpace: number;
   outlinedOutlineWidth: number;
+  outerBoundHeight: number;
   labelVariant: ButtonLabelVariant;
   containerShapeRound: ShapeToken;
   containerShapeSquare: ShapeToken;
@@ -35,6 +36,7 @@ const sizes = {
     leadingSpace: 12,
     trailingSpace: 12,
     outlinedOutlineWidth: 1,
+    outerBoundHeight: 48,
     labelVariant: 'labelLarge',
     containerShapeRound: 'full',
     containerShapeSquare: 'medium',
@@ -49,6 +51,7 @@ const sizes = {
     leadingSpace: 16,
     trailingSpace: 16,
     outlinedOutlineWidth: 1,
+    outerBoundHeight: 48,
     labelVariant: 'labelLarge',
     containerShapeRound: 'full',
     containerShapeSquare: 'medium',
@@ -63,6 +66,7 @@ const sizes = {
     leadingSpace: 24,
     trailingSpace: 24,
     outlinedOutlineWidth: 1,
+    outerBoundHeight: 64,
     labelVariant: 'titleMedium',
     containerShapeRound: 'full',
     containerShapeSquare: 'large',
@@ -77,6 +81,7 @@ const sizes = {
     leadingSpace: 48,
     trailingSpace: 48,
     outlinedOutlineWidth: 2,
+    outerBoundHeight: 104,
     labelVariant: 'headlineSmall',
     containerShapeRound: 'full',
     containerShapeSquare: 'extraLarge',
@@ -91,6 +96,7 @@ const sizes = {
     leadingSpace: 64,
     trailingSpace: 64,
     outlinedOutlineWidth: 3,
+    outerBoundHeight: 144,
     labelVariant: 'headlineLarge',
     containerShapeRound: 'full',
     containerShapeSquare: 'extraLarge',

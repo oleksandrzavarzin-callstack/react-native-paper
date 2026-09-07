@@ -1619,7 +1619,6 @@ exports[`DataTable.Pagination renders data table pagination with options select 
             [
               {
                 "borderStyle": "solid",
-                "overflow": "hidden",
               },
               {
                 "backgroundColor": "transparent",
@@ -1654,6 +1653,14 @@ exports[`DataTable.Pagination renders data table pagination with options select 
             accessible={true}
             collapsable={false}
             focusable={true}
+            hitSlop={
+              {
+                "bottom": 4,
+                "left": 0,
+                "right": 0,
+                "top": 4,
+              }
+            }
             onBlur={[Function]}
             onClick={[Function]}
             onFocus={[Function]}
@@ -1669,7 +1676,11 @@ exports[`DataTable.Pagination renders data table pagination with options select 
                 {
                   "overflow": "hidden",
                 },
-                undefined,
+                [
+                  {
+                    "borderRadius": 19,
+                  },
+                ],
               ]
             }
             testID="button"

@@ -1,4 +1,4 @@
-import type { ColorValue } from 'react-native';
+import type { ColorValue, Insets } from 'react-native';
 
 import color from 'color';
 
@@ -36,6 +36,7 @@ export type ButtonSizeStyle = {
   iconGap: number;
   outlineWidth: number;
   labelVariant: ButtonLabelVariant;
+  outerBoundHeight: number;
 };
 
 /**
@@ -52,7 +53,25 @@ export const getButtonSizeStyle = (size: ButtonSize): ButtonSizeStyle => {
     iconGap: t.iconLabelSpace,
     outlineWidth: t.outlinedOutlineWidth,
     labelVariant: t.labelVariant,
+    outerBoundHeight: t.outerBoundHeight,
   };
+};
+
+/**
+ * Slop that brings the touch target up to the size's `outerBoundHeight`,
+ * expanding outside the container.
+ *
+ * Returns `undefined` when the container is already tall enough.
+ */
+export const getButtonHitSlop = (size: ButtonSize): Insets | undefined => {
+  const { containerHeight, outerBoundHeight } = Tokens.sizes[size];
+  const vertical = (outerBoundHeight - containerHeight) / 2;
+
+  if (vertical <= 0) {
+    return undefined;
+  }
+
+  return { top: vertical, bottom: vertical, left: 0, right: 0 };
 };
 
 export type ButtonShape = 'round' | 'square';

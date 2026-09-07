@@ -20,6 +20,7 @@ import Reanimated, {
 
 import {
   getButtonColors,
+  getButtonHitSlop,
   getButtonPressedRadius,
   getButtonRippleColor,
   getButtonShapeRadius,
@@ -47,6 +48,9 @@ import Text from '../Typography/Text';
 // level 2 while pressed.
 const initialElevation = 1;
 const activeElevation = 2;
+
+const AnimatedTouchableRipple =
+  Reanimated.createAnimatedComponent(TouchableRipple);
 
 export type Props = Omit<ViewProps, 'style'> & {
   /**
@@ -301,6 +305,9 @@ const Button = ({
   const effectiveShape = getEffectiveButtonShape(shape, toggleSelected);
   const sizeStyle = React.useMemo(() => getButtonSizeStyle(size), [size]);
 
+  const effectiveHitSlop =
+    hitSlop === undefined ? getButtonHitSlop(size) : hitSlop;
+
   // Shape morph: animate the corner on press (→ the pressed shape token) and on
   // the `selected`/shape toggle.
   const animateShape = animateShapeProp;
@@ -451,6 +458,11 @@ const Button = ({
     [animatedRadius]
   );
 
+  const innerClipStyle = useAnimatedStyle(
+    () => ({ borderRadius: Math.max(0, animatedRadius.value - borderWidth) }),
+    [animatedRadius, borderWidth]
+  );
+
   const outlineStyle = React.useMemo(
     () => ({ backgroundColor: containerColor, borderColor, borderWidth }),
     [containerColor, borderColor, borderWidth]
@@ -495,16 +507,18 @@ const Button = ({
         style={[styles.clip, outlineStyle, clipStyle]}
       >
         {backgroundOpacity < 1 && (
-          <View
+          <Reanimated.View
             pointerEvents="none"
             style={[
               StyleSheet.absoluteFill,
+              innerClipStyle,
               { backgroundColor, opacity: backgroundOpacity },
             ]}
           />
         )}
-        <TouchableRipple
+        <AnimatedTouchableRipple
           borderless
+          style={innerClipStyle}
           background={background}
           rippleColor={rippleColor}
           onPress={onPress}
@@ -518,7 +532,7 @@ const Button = ({
           aria-disabled={disabled}
           aria-selected={toggleSelected}
           accessible={accessible}
-          hitSlop={hitSlop}
+          hitSlop={effectiveHitSlop}
           disabled={disabled}
           testID={testID}
           theme={theme}
@@ -568,7 +582,7 @@ const Button = ({
               {children}
             </Text>
           </View>
-        </TouchableRipple>
+        </AnimatedTouchableRipple>
       </Reanimated.View>
     </Surface>
   );
@@ -580,7 +594,6 @@ const styles = StyleSheet.create({
   },
   clip: {
     borderStyle: 'solid',
-    overflow: 'hidden',
   },
   content: {
     flexDirection: 'row',

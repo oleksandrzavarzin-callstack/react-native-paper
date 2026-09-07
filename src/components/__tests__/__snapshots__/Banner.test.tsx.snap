@@ -275,7 +275,6 @@ exports[`render visible banner, with custom theme 1`] = `
               [
                 {
                   "borderStyle": "solid",
-                  "overflow": "hidden",
                 },
                 {
                   "backgroundColor": "transparent",
@@ -310,6 +309,14 @@ exports[`render visible banner, with custom theme 1`] = `
               accessible={true}
               collapsable={false}
               focusable={true}
+              hitSlop={
+                {
+                  "bottom": 4,
+                  "left": 0,
+                  "right": 0,
+                  "top": 4,
+                }
+              }
               onBlur={[Function]}
               onClick={[Function]}
               onFocus={[Function]}
@@ -325,7 +332,11 @@ exports[`render visible banner, with custom theme 1`] = `
                   {
                     "overflow": "hidden",
                   },
-                  undefined,
+                  [
+                    {
+                      "borderRadius": 20,
+                    },
+                  ],
                 ]
               }
               testID="button"
@@ -897,7 +908,6 @@ exports[`renders visible banner, with action buttons and with image 1`] = `
               [
                 {
                   "borderStyle": "solid",
-                  "overflow": "hidden",
                 },
                 {
                   "backgroundColor": "transparent",
@@ -932,6 +942,14 @@ exports[`renders visible banner, with action buttons and with image 1`] = `
               accessible={true}
               collapsable={false}
               focusable={true}
+              hitSlop={
+                {
+                  "bottom": 4,
+                  "left": 0,
+                  "right": 0,
+                  "top": 4,
+                }
+              }
               onBlur={[Function]}
               onClick={[Function]}
               onFocus={[Function]}
@@ -947,7 +965,11 @@ exports[`renders visible banner, with action buttons and with image 1`] = `
                   {
                     "overflow": "hidden",
                   },
-                  undefined,
+                  [
+                    {
+                      "borderRadius": 20,
+                    },
+                  ],
                 ]
               }
               testID="button"
@@ -1301,7 +1323,6 @@ exports[`renders visible banner, with action buttons and without image 1`] = `
               [
                 {
                   "borderStyle": "solid",
-                  "overflow": "hidden",
                 },
                 {
                   "backgroundColor": "transparent",
@@ -1336,6 +1357,14 @@ exports[`renders visible banner, with action buttons and without image 1`] = `
               accessible={true}
               collapsable={false}
               focusable={true}
+              hitSlop={
+                {
+                  "bottom": 4,
+                  "left": 0,
+                  "right": 0,
+                  "top": 4,
+                }
+              }
               onBlur={[Function]}
               onClick={[Function]}
               onFocus={[Function]}
@@ -1351,7 +1380,11 @@ exports[`renders visible banner, with action buttons and without image 1`] = `
                   {
                     "overflow": "hidden",
                   },
-                  undefined,
+                  [
+                    {
+                      "borderRadius": 20,
+                    },
+                  ],
                 ]
               }
               testID="button"
@@ -1521,7 +1554,6 @@ exports[`renders visible banner, with action buttons and without image 1`] = `
               [
                 {
                   "borderStyle": "solid",
-                  "overflow": "hidden",
                 },
                 {
                   "backgroundColor": "transparent",
@@ -1556,6 +1588,14 @@ exports[`renders visible banner, with action buttons and without image 1`] = `
               accessible={true}
               collapsable={false}
               focusable={true}
+              hitSlop={
+                {
+                  "bottom": 4,
+                  "left": 0,
+                  "right": 0,
+                  "top": 4,
+                }
+              }
               onBlur={[Function]}
               onClick={[Function]}
               onFocus={[Function]}
@@ -1571,7 +1611,11 @@ exports[`renders visible banner, with action buttons and without image 1`] = `
                   {
                     "overflow": "hidden",
                   },
-                  undefined,
+                  [
+                    {
+                      "borderRadius": 20,
+                    },
+                  ],
                 ]
               }
               testID="button"
