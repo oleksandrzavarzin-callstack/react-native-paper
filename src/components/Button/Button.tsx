@@ -32,7 +32,7 @@ import { getDefaultDirection, useLocale } from '../../core/locale';
 import { useInternalTheme } from '../../core/theming';
 import { useReduceMotion } from '../../theme/accessibility/ReduceMotionContext';
 import { toRawSpring } from '../../theme/tokens/sys/motion';
-import type { ThemeProp } from '../../types';
+import type { ThemeProp } from '../../theme/types';
 import hasTouchHandler from '../../utils/hasTouchHandler';
 import ActivityIndicator from '../ActivityIndicator';
 import Icon from '../Icon';
