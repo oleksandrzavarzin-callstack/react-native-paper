@@ -705,8 +705,8 @@ const sizeMetrics: [
   ['extra-small', 32, 12, 12, 20, 4, 1, 'labelLarge'],
   ['small', 40, 16, 16, 20, 8, 1, 'labelLarge'],
   ['medium', 56, 24, 24, 24, 8, 1, 'titleMedium'],
-  ['large', 96, 48, 48, 32, 12, 1, 'headlineSmall'],
-  ['extra-large', 136, 64, 64, 40, 16, 1, 'headlineLarge'],
+  ['large', 96, 48, 48, 32, 12, 2, 'headlineSmall'],
+  ['extra-large', 136, 64, 64, 40, 16, 3, 'headlineLarge'],
 ];
 
 describe('getButtonSizeStyle', () => {
@@ -1102,6 +1102,15 @@ it('forwards `style` to the shadow host', async () => {
 
 describe('container height', () => {
   const MODES = ['filled', 'tonal', 'elevated', 'outlined', 'text'] as const;
+  // The outlined stroke thickens with the size (1dp up to M, 2dp L, 3dp XL),
+  // so every size has to be checked against its own token metrics.
+  const SIZES = [
+    'extra-small',
+    'small',
+    'medium',
+    'large',
+    'extra-large',
+  ] as const;
   const { containerHeight, leadingSpace } = Tokens.sizes.small;
 
   // The rendered container is the content box plus the outline Yoga draws
@@ -1134,6 +1143,22 @@ describe('container height', () => {
       leading: leadingSpace,
     });
   });
+
+  it.each(SIZES)(
+    'insets the %s outline so the box stays on the token metrics',
+    async (size) => {
+      await render(
+        <Button mode="outlined" size={size} testID="button">
+          X
+        </Button>
+      );
+
+      expect(renderedBox('button')).toEqual({
+        height: Tokens.sizes[size].containerHeight,
+        leading: Tokens.sizes[size].leadingSpace,
+      });
+    }
+  );
 
   it('keeps an outlined toggle the same size in both states', async () => {
     await render(
