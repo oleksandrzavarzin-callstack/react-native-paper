@@ -41,7 +41,6 @@ exports[`renders button with an accessibility hint 1`] = `
       },
     ]
   }
-  testID="button-container-outer-layer"
 >
   <View
     collapsable={false}
@@ -107,7 +106,6 @@ exports[`renders button with an accessibility hint 1`] = `
         },
       ]
     }
-    testID="button-container"
   >
     <View
       accessibilityHint="hint"
@@ -161,7 +159,6 @@ exports[`renders button with an accessibility hint 1`] = `
           ],
         ]
       }
-      testID="button"
     >
       <View
         style={
@@ -184,7 +181,6 @@ exports[`renders button with an accessibility hint 1`] = `
             undefined,
           ]
         }
-        testID="button-content"
       >
         <Text
           numberOfLines={1}
@@ -223,7 +219,6 @@ exports[`renders button with an accessibility hint 1`] = `
               ],
             ]
           }
-          testID="button-text"
         >
           Button with accessibility hint
         </Text>
@@ -275,7 +270,6 @@ exports[`renders button with an accessibility label 1`] = `
       },
     ]
   }
-  testID="button-container-outer-layer"
 >
   <View
     collapsable={false}
@@ -341,7 +335,6 @@ exports[`renders button with an accessibility label 1`] = `
         },
       ]
     }
-    testID="button-container"
   >
     <View
       accessibilityState={
@@ -394,7 +387,6 @@ exports[`renders button with an accessibility label 1`] = `
           ],
         ]
       }
-      testID="button"
     >
       <View
         style={
@@ -417,7 +409,6 @@ exports[`renders button with an accessibility label 1`] = `
             undefined,
           ]
         }
-        testID="button-content"
       >
         <Text
           numberOfLines={1}
@@ -456,7 +447,6 @@ exports[`renders button with an accessibility label 1`] = `
               ],
             ]
           }
-          testID="button-text"
         >
           Button with accessibility label
         </Text>
@@ -507,7 +497,6 @@ exports[`renders button with button color 1`] = `
       },
     ]
   }
-  testID="button-container-outer-layer"
 >
   <View
     collapsable={false}
@@ -573,7 +562,6 @@ exports[`renders button with button color 1`] = `
         },
       ]
     }
-    testID="button-container"
   >
     <View
       accessibilityState={
@@ -626,7 +614,6 @@ exports[`renders button with button color 1`] = `
           ],
         ]
       }
-      testID="button"
     >
       <View
         style={
@@ -649,7 +636,6 @@ exports[`renders button with button color 1`] = `
             undefined,
           ]
         }
-        testID="button-content"
       >
         <Text
           numberOfLines={1}
@@ -688,7 +674,6 @@ exports[`renders button with button color 1`] = `
               ],
             ]
           }
-          testID="button-text"
         >
           Custom Button
         </Text>
@@ -739,7 +724,6 @@ exports[`renders button with color 1`] = `
       },
     ]
   }
-  testID="button-container-outer-layer"
 >
   <View
     collapsable={false}
@@ -805,7 +789,6 @@ exports[`renders button with color 1`] = `
         },
       ]
     }
-    testID="button-container"
   >
     <View
       accessibilityState={
@@ -858,7 +841,6 @@ exports[`renders button with color 1`] = `
           ],
         ]
       }
-      testID="button"
     >
       <View
         style={
@@ -881,7 +863,6 @@ exports[`renders button with color 1`] = `
             undefined,
           ]
         }
-        testID="button-content"
       >
         <Text
           numberOfLines={1}
@@ -920,7 +901,6 @@ exports[`renders button with color 1`] = `
               ],
             ]
           }
-          testID="button-text"
         >
           Custom Button
         </Text>
@@ -971,7 +951,6 @@ exports[`renders button with custom testID 1`] = `
       },
     ]
   }
-  testID="custom:testID-container-outer-layer"
 >
   <View
     collapsable={false}
@@ -1037,7 +1016,6 @@ exports[`renders button with custom testID 1`] = `
         },
       ]
     }
-    testID="custom:testID-container"
   >
     <View
       accessibilityState={
@@ -1113,7 +1091,6 @@ exports[`renders button with custom testID 1`] = `
             undefined,
           ]
         }
-        testID="custom:testID-content"
       >
         <Text
           numberOfLines={1}
@@ -1152,7 +1129,6 @@ exports[`renders button with custom testID 1`] = `
               ],
             ]
           }
-          testID="custom:testID-text"
         >
           Button with custom testID
         </Text>
@@ -1203,7 +1179,6 @@ exports[`renders button with icon 1`] = `
       },
     ]
   }
-  testID="button-container-outer-layer"
 >
   <View
     collapsable={false}
@@ -1269,7 +1244,6 @@ exports[`renders button with icon 1`] = `
         },
       ]
     }
-    testID="button-container"
   >
     <View
       accessibilityState={
@@ -1322,7 +1296,6 @@ exports[`renders button with icon 1`] = `
           ],
         ]
       }
-      testID="button"
     >
       <View
         style={
@@ -1345,11 +1318,8 @@ exports[`renders button with icon 1`] = `
             undefined,
           ]
         }
-        testID="button-content"
       >
-        <View
-          testID="button-icon-container"
-        >
+        <View>
           <Text
             accessibilityElementsHidden={true}
             importantForAccessibility="no-hide-descendants"
@@ -1417,7 +1387,6 @@ exports[`renders button with icon 1`] = `
               ],
             ]
           }
-          testID="button-text"
         >
           Icon Button
         </Text>
@@ -1468,7 +1437,6 @@ exports[`renders button with icon in reverse order 1`] = `
       },
     ]
   }
-  testID="button-container-outer-layer"
 >
   <View
     collapsable={false}
@@ -1534,7 +1502,6 @@ exports[`renders button with icon in reverse order 1`] = `
         },
       ]
     }
-    testID="button-container"
   >
     <View
       accessibilityState={
@@ -1587,7 +1554,6 @@ exports[`renders button with icon in reverse order 1`] = `
           ],
         ]
       }
-      testID="button"
     >
       <View
         style={
@@ -1612,11 +1578,8 @@ exports[`renders button with icon in reverse order 1`] = `
             },
           ]
         }
-        testID="button-content"
       >
-        <View
-          testID="button-icon-container"
-        >
+        <View>
           <Text
             accessibilityElementsHidden={true}
             importantForAccessibility="no-hide-descendants"
@@ -1684,7 +1647,6 @@ exports[`renders button with icon in reverse order 1`] = `
               ],
             ]
           }
-          testID="button-text"
         >
           Right Icon
         </Text>
@@ -1735,7 +1697,6 @@ exports[`renders disabled button 1`] = `
       },
     ]
   }
-  testID="button-container-outer-layer"
 >
   <View
     collapsable={false}
@@ -1801,7 +1762,6 @@ exports[`renders disabled button 1`] = `
         },
       ]
     }
-    testID="button-container"
   >
     <View
       collapsable={false}
@@ -1876,7 +1836,6 @@ exports[`renders disabled button 1`] = `
           ],
         ]
       }
-      testID="button"
     >
       <View
         style={
@@ -1899,7 +1858,6 @@ exports[`renders disabled button 1`] = `
             undefined,
           ]
         }
-        testID="button-content"
       >
         <Text
           numberOfLines={1}
@@ -1938,7 +1896,6 @@ exports[`renders disabled button 1`] = `
               ],
             ]
           }
-          testID="button-text"
         >
           Disabled Button
         </Text>
@@ -1989,7 +1946,6 @@ exports[`renders filled button by default 1`] = `
       },
     ]
   }
-  testID="button-container-outer-layer"
 >
   <View
     collapsable={false}
@@ -2055,7 +2011,6 @@ exports[`renders filled button by default 1`] = `
         },
       ]
     }
-    testID="button-container"
   >
     <View
       accessibilityState={
@@ -2108,7 +2063,6 @@ exports[`renders filled button by default 1`] = `
           ],
         ]
       }
-      testID="button"
     >
       <View
         style={
@@ -2131,7 +2085,6 @@ exports[`renders filled button by default 1`] = `
             undefined,
           ]
         }
-        testID="button-content"
       >
         <Text
           numberOfLines={1}
@@ -2170,7 +2123,6 @@ exports[`renders filled button by default 1`] = `
               ],
             ]
           }
-          testID="button-text"
         >
           Filled Button
         </Text>
@@ -2221,7 +2173,6 @@ exports[`renders filled button with mode 1`] = `
       },
     ]
   }
-  testID="button-container-outer-layer"
 >
   <View
     collapsable={false}
@@ -2287,7 +2238,6 @@ exports[`renders filled button with mode 1`] = `
         },
       ]
     }
-    testID="button-container"
   >
     <View
       accessibilityState={
@@ -2340,7 +2290,6 @@ exports[`renders filled button with mode 1`] = `
           ],
         ]
       }
-      testID="button"
     >
       <View
         style={
@@ -2363,7 +2312,6 @@ exports[`renders filled button with mode 1`] = `
             undefined,
           ]
         }
-        testID="button-content"
       >
         <Text
           numberOfLines={1}
@@ -2402,7 +2350,6 @@ exports[`renders filled button with mode 1`] = `
               ],
             ]
           }
-          testID="button-text"
         >
           Contained Button
         </Text>
@@ -2453,7 +2400,6 @@ exports[`renders loading button 1`] = `
       },
     ]
   }
-  testID="button-container-outer-layer"
 >
   <View
     collapsable={false}
@@ -2519,7 +2465,6 @@ exports[`renders loading button 1`] = `
         },
       ]
     }
-    testID="button-container"
   >
     <View
       accessibilityState={
@@ -2572,7 +2517,6 @@ exports[`renders loading button 1`] = `
           ],
         ]
       }
-      testID="button"
     >
       <View
         style={
@@ -2595,7 +2539,6 @@ exports[`renders loading button 1`] = `
             undefined,
           ]
         }
-        testID="button-content"
       >
         <View
           accessible={true}
@@ -2825,7 +2768,6 @@ exports[`renders loading button 1`] = `
               ],
             ]
           }
-          testID="button-text"
         >
           Loading Button
         </Text>
@@ -2876,7 +2818,6 @@ exports[`renders outlined button with mode 1`] = `
       },
     ]
   }
-  testID="button-container-outer-layer"
 >
   <View
     collapsable={false}
@@ -2942,7 +2883,6 @@ exports[`renders outlined button with mode 1`] = `
         },
       ]
     }
-    testID="button-container"
   >
     <View
       accessibilityState={
@@ -2995,7 +2935,6 @@ exports[`renders outlined button with mode 1`] = `
           ],
         ]
       }
-      testID="button"
     >
       <View
         style={
@@ -3018,7 +2957,6 @@ exports[`renders outlined button with mode 1`] = `
             undefined,
           ]
         }
-        testID="button-content"
       >
         <Text
           numberOfLines={1}
@@ -3057,7 +2995,6 @@ exports[`renders outlined button with mode 1`] = `
               ],
             ]
           }
-          testID="button-text"
         >
           Outlined Button
         </Text>
@@ -3108,7 +3045,6 @@ exports[`renders text button with mode 1`] = `
       },
     ]
   }
-  testID="button-container-outer-layer"
 >
   <View
     collapsable={false}
@@ -3174,7 +3110,6 @@ exports[`renders text button with mode 1`] = `
         },
       ]
     }
-    testID="button-container"
   >
     <View
       accessibilityState={
@@ -3227,7 +3162,6 @@ exports[`renders text button with mode 1`] = `
           ],
         ]
       }
-      testID="button"
     >
       <View
         style={
@@ -3250,7 +3184,6 @@ exports[`renders text button with mode 1`] = `
             undefined,
           ]
         }
-        testID="button-content"
       >
         <Text
           numberOfLines={1}
@@ -3289,7 +3222,6 @@ exports[`renders text button with mode 1`] = `
               ],
             ]
           }
-          testID="button-text"
         >
           Text Button
         </Text>
@@ -3340,7 +3272,6 @@ exports[`size prop renders a button with per-size metrics 1`] = `
       },
     ]
   }
-  testID="button-container-outer-layer"
 >
   <View
     collapsable={false}
@@ -3406,7 +3337,6 @@ exports[`size prop renders a button with per-size metrics 1`] = `
         },
       ]
     }
-    testID="button-container"
   >
     <View
       accessibilityState={
@@ -3459,7 +3389,6 @@ exports[`size prop renders a button with per-size metrics 1`] = `
           ],
         ]
       }
-      testID="button"
     >
       <View
         style={
@@ -3482,11 +3411,8 @@ exports[`size prop renders a button with per-size metrics 1`] = `
             undefined,
           ]
         }
-        testID="button-content"
       >
-        <View
-          testID="button-icon-container"
-        >
+        <View>
           <Text
             accessibilityElementsHidden={true}
             importantForAccessibility="no-hide-descendants"
@@ -3554,7 +3480,6 @@ exports[`size prop renders a button with per-size metrics 1`] = `
               ],
             ]
           }
-          testID="button-text"
         >
           Medium
         </Text>

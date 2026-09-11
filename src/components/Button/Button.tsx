@@ -253,7 +253,7 @@ const Button = ({
   theme: themeOverrides,
   contentStyle,
   labelStyle,
-  testID = 'button',
+  testID,
   accessible,
   background,
   rippleColor: customRippleColor,
@@ -495,17 +495,13 @@ const Button = ({
     <Surface
       {...rest}
       ref={ref}
-      testID={`${testID}-container-outer-layer`}
       backgroundColor={containerColor}
       borderRadius={animatedRadius}
       elevation={elevation}
       transitionDuration={surfaceTransitionDuration}
       style={[styles.button, style]}
     >
-      <Reanimated.View
-        testID={`${testID}-container`}
-        style={[styles.clip, outlineStyle, clipStyle]}
-      >
+      <Reanimated.View style={[styles.clip, outlineStyle, clipStyle]}>
         {backgroundOpacity < 1 && (
           <Reanimated.View
             pointerEvents="none"
@@ -539,7 +535,6 @@ const Button = ({
           ref={touchableRef}
         >
           <View
-            testID={`${testID}-content`}
             style={[
               styles.content,
               isTrailingIcon && styles.contentReverse,
@@ -549,7 +544,7 @@ const Button = ({
             ]}
           >
             {icon && loading !== true ? (
-              <View testID={`${testID}-icon-container`}>
+              <View>
                 <Icon
                   source={icon}
                   size={sizeStyle.iconSize}
@@ -575,7 +570,6 @@ const Button = ({
               variant={sizeStyle.labelVariant}
               selectable={false}
               numberOfLines={1}
-              testID={`${testID}-text`}
               style={[styles.label, labelTypeStyle, labelStyle]}
               maxFontSizeMultiplier={maxFontSizeMultiplier}
             >

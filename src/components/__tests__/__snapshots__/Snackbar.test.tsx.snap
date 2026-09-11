@@ -522,7 +522,6 @@ exports[`renders snackbar with action button 1`] = `
             },
           ]
         }
-        testID="button-container-outer-layer"
       >
         <View
           collapsable={false}
@@ -588,7 +587,6 @@ exports[`renders snackbar with action button 1`] = `
               },
             ]
           }
-          testID="button-container"
         >
           <View
             accessibilityState={
@@ -641,7 +639,6 @@ exports[`renders snackbar with action button 1`] = `
                 ],
               ]
             }
-            testID="button"
           >
             <View
               style={
@@ -664,7 +661,6 @@ exports[`renders snackbar with action button 1`] = `
                   undefined,
                 ]
               }
-              testID="button-content"
             >
               <Text
                 numberOfLines={1}
@@ -703,7 +699,6 @@ exports[`renders snackbar with action button 1`] = `
                     ],
                   ]
                 }
-                testID="button-text"
               >
                 Undo
               </Text>

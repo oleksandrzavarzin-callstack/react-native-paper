@@ -220,7 +220,6 @@ exports[`render visible banner, with custom theme 1`] = `
               },
             ]
           }
-          testID="button-container-outer-layer"
         >
           <View
             collapsable={false}
@@ -286,7 +285,6 @@ exports[`render visible banner, with custom theme 1`] = `
                 },
               ]
             }
-            testID="button-container"
           >
             <View
               accessibilityState={
@@ -339,7 +337,6 @@ exports[`render visible banner, with custom theme 1`] = `
                   ],
                 ]
               }
-              testID="button"
             >
               <View
                 style={
@@ -362,7 +359,6 @@ exports[`render visible banner, with custom theme 1`] = `
                     undefined,
                   ]
                 }
-                testID="button-content"
               >
                 <Text
                   numberOfLines={1}
@@ -401,7 +397,6 @@ exports[`render visible banner, with custom theme 1`] = `
                       ],
                     ]
                   }
-                  testID="button-text"
                 >
                   first
                 </Text>
@@ -853,7 +848,6 @@ exports[`renders visible banner, with action buttons and with image 1`] = `
               },
             ]
           }
-          testID="button-container-outer-layer"
         >
           <View
             collapsable={false}
@@ -919,7 +913,6 @@ exports[`renders visible banner, with action buttons and with image 1`] = `
                 },
               ]
             }
-            testID="button-container"
           >
             <View
               accessibilityState={
@@ -972,7 +965,6 @@ exports[`renders visible banner, with action buttons and with image 1`] = `
                   ],
                 ]
               }
-              testID="button"
             >
               <View
                 style={
@@ -995,7 +987,6 @@ exports[`renders visible banner, with action buttons and with image 1`] = `
                     undefined,
                   ]
                 }
-                testID="button-content"
               >
                 <Text
                   numberOfLines={1}
@@ -1034,7 +1025,6 @@ exports[`renders visible banner, with action buttons and with image 1`] = `
                       ],
                     ]
                   }
-                  testID="button-text"
                 >
                   first
                 </Text>
@@ -1268,7 +1258,6 @@ exports[`renders visible banner, with action buttons and without image 1`] = `
               },
             ]
           }
-          testID="button-container-outer-layer"
         >
           <View
             collapsable={false}
@@ -1334,7 +1323,6 @@ exports[`renders visible banner, with action buttons and without image 1`] = `
                 },
               ]
             }
-            testID="button-container"
           >
             <View
               accessibilityState={
@@ -1387,7 +1375,6 @@ exports[`renders visible banner, with action buttons and without image 1`] = `
                   ],
                 ]
               }
-              testID="button"
             >
               <View
                 style={
@@ -1410,7 +1397,6 @@ exports[`renders visible banner, with action buttons and without image 1`] = `
                     undefined,
                   ]
                 }
-                testID="button-content"
               >
                 <Text
                   numberOfLines={1}
@@ -1449,7 +1435,6 @@ exports[`renders visible banner, with action buttons and without image 1`] = `
                       ],
                     ]
                   }
-                  testID="button-text"
                 >
                   first
                 </Text>
@@ -1499,7 +1484,6 @@ exports[`renders visible banner, with action buttons and without image 1`] = `
               },
             ]
           }
-          testID="button-container-outer-layer"
         >
           <View
             collapsable={false}
@@ -1565,7 +1549,6 @@ exports[`renders visible banner, with action buttons and without image 1`] = `
                 },
               ]
             }
-            testID="button-container"
           >
             <View
               accessibilityState={
@@ -1618,7 +1601,6 @@ exports[`renders visible banner, with action buttons and without image 1`] = `
                   ],
                 ]
               }
-              testID="button"
             >
               <View
                 style={
@@ -1641,7 +1623,6 @@ exports[`renders visible banner, with action buttons and without image 1`] = `
                     undefined,
                   ]
                 }
-                testID="button-content"
               >
                 <Text
                   numberOfLines={1}
@@ -1680,7 +1661,6 @@ exports[`renders visible banner, with action buttons and without image 1`] = `
                       ],
                     ]
                   }
-                  testID="button-text"
                 >
                   second
                 </Text>
