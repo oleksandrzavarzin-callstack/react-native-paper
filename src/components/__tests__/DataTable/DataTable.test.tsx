@@ -328,8 +328,33 @@ describe('DataTable.Row', () => {
     expect(screen.getByTestId('row')).toHaveProp('aria-rowindex', 2);
   });
 
-  it('numbers rows grouped in a wrapper one by one', async () => {
+  it('does not take an element inside an empty state for a row', async () => {
     Platform.OS = 'web';
+
+    const Badge = () => <RNText>!</RNText>;
+
+    await render(
+      <DataTable testID="table">
+        <DataTable.Header>
+          <DataTable.Title>Dessert</DataTable.Title>
+        </DataTable.Header>
+        <RNText>
+          Only one dessert left <Badge />
+        </RNText>
+        <DataTable.Row testID="row">
+          <DataTable.Cell>Frozen yogurt</DataTable.Cell>
+        </DataTable.Row>
+      </DataTable>
+    );
+
+    expect(screen.getByTestId('table')).toHaveProp('aria-rowcount', 2);
+    expect(screen.getByTestId('row')).toHaveProp('aria-rowindex', 2);
+  });
+
+  it('counts rows grouped in a wrapper without rebuilding the wrapper', async () => {
+    Platform.OS = 'web';
+
+    const warn = jest.spyOn(console, 'warn').mockImplementation(() => {});
 
     await render(
       <DataTable testID="table">
@@ -337,19 +362,44 @@ describe('DataTable.Row', () => {
           <DataTable.Title>Dessert</DataTable.Title>
         </DataTable.Header>
         <View>
-          <DataTable.Row testID="first">
+          <DataTable.Row testID="first" index={0}>
             <DataTable.Cell>Frozen yogurt</DataTable.Cell>
           </DataTable.Row>
-          <DataTable.Row testID="second">
+          <DataTable.Row testID="second" index={1}>
             <DataTable.Cell>Eclair</DataTable.Cell>
           </DataTable.Row>
         </View>
+        <DataTable.Row testID="third">
+          <DataTable.Cell>Gingerbread</DataTable.Cell>
+        </DataTable.Row>
       </DataTable>
     );
 
     expect(screen.getByTestId('first')).toHaveProp('aria-rowindex', 2);
     expect(screen.getByTestId('second')).toHaveProp('aria-rowindex', 3);
-    expect(screen.getByTestId('table')).toHaveProp('aria-rowcount', 3);
+    expect(screen.getByTestId('third')).toHaveProp('aria-rowindex', 4);
+    expect(screen.getByTestId('table')).toHaveProp('aria-rowcount', 4);
+    expect(warn).not.toHaveBeenCalled();
+
+    warn.mockRestore();
+  });
+
+  it('warns about a row in a wrapper that was given no index', async () => {
+    const warn = jest.spyOn(console, 'warn').mockImplementation(() => {});
+
+    await render(
+      <DataTable>
+        <View>
+          <DataTable.Row>
+            <DataTable.Cell>Frozen yogurt</DataTable.Cell>
+          </DataTable.Row>
+        </View>
+      </DataTable>
+    );
+
+    expect(warn).toHaveBeenCalledWith(expect.stringContaining('`index`'));
+
+    warn.mockRestore();
   });
 
   it('finds the header and pagination inside a wrapper it cannot see through', async () => {

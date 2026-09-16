@@ -22,17 +22,17 @@ export const isDataTableElement = <P>(
   );
 };
 
+/** Whether an element is text, which is never a row and never holds one. */
+export const isTextElement = (child: React.ReactElement): boolean =>
+  child.type === NativeText || child.type === Text;
+
 /**
- * Whether the table can see through an element to the children it was given:
- * the primitives it is built from render what they are handed, so a row inside
- * one keeps its own place in the table.
+ * Whether an element only groups the children it was given: the primitives
+ * the table is built from render what they are handed, so a row inside one
+ * keeps its own place in the table.
  */
-export const isTransparentContainer = (child: React.ReactElement): boolean =>
-  child.type === React.Fragment ||
-  child.type === View ||
-  child.type === ScrollView ||
-  child.type === NativeText ||
-  child.type === Text;
+export const isGroupingContainer = (child: React.ReactElement): boolean =>
+  child.type === View || child.type === ScrollView;
 
 const structuralParts = [
   'DataTable.Header',

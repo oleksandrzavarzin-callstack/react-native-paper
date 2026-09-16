@@ -117,6 +117,16 @@ const DataTableRow = ({
   // those pass their index themselves.
   const rowIndex = index ?? position ?? undefined;
 
+  if (
+    process.env.NODE_ENV !== 'production' &&
+    table != null &&
+    rowIndex == null
+  ) {
+    console.warn(
+      'DataTable.Row has no position: a row inside a wrapper, or in a list, needs `index`'
+    );
+  }
+
   const interactive = hasTouchHandler({
     onPress,
     onLongPress,

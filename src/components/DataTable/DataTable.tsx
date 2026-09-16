@@ -22,7 +22,8 @@ import {
   containsTableStructure,
   defaultFormatRowPosition,
   isDataTableElement,
-  isTransparentContainer,
+  isGroupingContainer,
+  isTextElement,
   readColumnLabels,
 } from './utils';
 import type { FormatRowPosition } from './utils';
@@ -70,11 +71,6 @@ export type Props = ViewProps & {
   formatRowPosition?: FormatRowPosition | null;
   style?: StyleProp<ViewStyle>;
 };
-
-// `React.Children.map` always hands back an array, which is one child too many
-// for a wrapper written around `React.Children.only`.
-const unwrapSingleChild = (children: React.ReactNode): React.ReactNode =>
-  Array.isArray(children) && children.length === 1 ? children[0] : children;
 
 /**
  * Data tables allow displaying sets of data.
@@ -213,7 +209,10 @@ const DataTable = ({
           }
 
           // Read before the guards below narrow `child` to `never`.
-          const { children: nested } = child.props;
+          const {
+            type,
+            props: { children: nested },
+          } = child;
 
           if (
             isDataTableElement<DataTableHeaderProps>(child, 'DataTable.Header')
@@ -231,18 +230,17 @@ const DataTable = ({
             return number(child);
           }
 
-          // A container the table sees through, or a wrapper it can see the
-          // table's own parts inside, keeps its rows where they are: descend
-          // into it, so a wrapper does not make its rows one row, nor an empty
-          // state a row.
-          if (isTransparentContainer(child) || containsTableStructure(nested)) {
-            return nested === undefined
-              ? child
-              : React.cloneElement(
-                  child,
-                  undefined,
-                  unwrapSingleChild(walk(nested))
-                );
+          if (isTextElement(child)) {
+            return child;
+          }
+
+          if (type === React.Fragment) {
+            return walk(nested);
+          }
+
+          if (isGroupingContainer(child) || containsTableStructure(nested)) {
+            void walk(nested);
+            return child;
           }
 
           // What is left renders out of sight - a row component of the
